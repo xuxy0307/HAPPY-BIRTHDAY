@@ -131,4 +131,86 @@
   .collect-star,.ordinary-star{width:52px;height:52px;box-shadow:0 8px 20px rgb(84 123 73 / 16%),0 0 0 6px rgb(255 255 255 / 30%);translate:-35% 0}.collect-star span,.ordinary-star span{font-size:1.65rem}
   .candle-interaction .birthday-candle-visual{width:126px;height:108px}.candle-interaction .birthday-candle-visual b{font-size:4.7rem}
 }
+
+/* Closed birthday-card cover and cross-device layout */
+body{overflow-x:hidden}button{touch-action:manipulation}
+.card-cover-stage{min-height:100svh;padding:104px 20px 40px;perspective:1500px}
+.card-cover-stage .rainbow-orbit{width:min(760px,80vw);opacity:.18}
+.greeting-card-cover{position:relative;z-index:20;width:min(860px,calc(100vw - 40px));min-height:500px;aspect-ratio:1.62;margin:auto;transform-style:preserve-3d;transform-origin:0 50%;filter:drop-shadow(0 34px 38px rgb(39 102 74 / 18%))}
+.greeting-card-edge{position:absolute;z-index:-1;inset:15px -15px -15px 15px;border:2px solid rgb(42 103 80 / 46%);border-radius:38px;background:linear-gradient(145deg,#39836a,#285f50);box-shadow:0 20px 45px rgb(41 92 67 / 18%)}
+.greeting-card-inner{position:relative;display:flex;min-height:inherit;height:100%;align-items:center;justify-content:center;flex-direction:column;padding:clamp(46px,7vw,84px);overflow:hidden;border:2px solid rgb(255 255 255 / 88%);border-radius:36px;background:radial-gradient(circle at 50% 42%,rgb(255 255 236 / 96%) 0 25%,transparent 67%),linear-gradient(145deg,rgb(247 255 220 / 96%),rgb(226 250 207 / 96%));box-shadow:inset 0 0 0 10px rgb(255 255 255 / 35%),inset 0 0 0 11px rgb(78 139 99 / 12%);text-align:center;backdrop-filter:blur(18px)}
+.greeting-card-inner::before,.greeting-card-inner::after{content:'';position:absolute;width:220px;height:220px;border:34px solid rgb(255 205 97 / 16%);border-radius:50%;pointer-events:none}.greeting-card-inner::before{top:-132px;left:-88px}.greeting-card-inner::after{right:-88px;bottom:-132px;border-color:rgb(101 197 167 / 16%)}
+.cover-sparkle{position:relative;width:34px;height:34px;margin-bottom:17px;color:#e9af3f;filter:drop-shadow(0 5px 7px rgb(175 125 31 / 16%))}
+.greeting-card-inner .eyebrow{position:relative;margin-bottom:18px}
+.greeting-card-inner>h1.single-line-title{position:relative;width:100%;margin:0;color:#245e4d;font-family:var(--font-display);font-size:clamp(2rem,4.55vw,4.2rem);font-weight:650;line-height:1.12;letter-spacing:-.045em;white-space:nowrap;text-shadow:0 2px 0 white}
+.greeting-card-inner>h1.thai-title{font-size:clamp(1.65rem,3.5vw,3.25rem)}
+.cover-divider{position:relative;display:flex;align-items:center;justify-content:center;width:min(250px,54%);margin:25px auto 20px;gap:13px}.cover-divider::before,.cover-divider::after{content:'';height:1px;flex:1;background:linear-gradient(90deg,transparent,#d9ad53)}.cover-divider::after{background:linear-gradient(90deg,#d9ad53,transparent)}.cover-divider i{width:7px;height:7px;border-radius:50%;background:#ff8f96;box-shadow:16px 0 #65c9e8,-16px 0 #74cf93}.cover-divider i:nth-child(n+2){display:none}
+.cover-message{position:relative;margin:0 0 26px;color:#506f63;font-family:var(--font-display);font-size:clamp(1.1rem,2vw,1.45rem);line-height:1.6}
+.open-card-button{min-width:180px;min-height:52px;font-size:1rem;transition:transform .25s ease,box-shadow .25s ease}.open-card-button svg{width:19px}.open-card-button:disabled{opacity:.82;cursor:wait}
+.greeting-card-cover.is-opening{animation:cardCoverOpen .72s cubic-bezier(.55,.02,.24,.98) both}
+.card-open-stage .hero-copy{animation:heroReveal .55s ease-out both}
+@keyframes cardCoverOpen{0%{opacity:1;transform:rotateY(0) scale(1)}70%{opacity:.82;transform:rotateY(-76deg) scale(.98)}100%{opacity:0;transform:rotateY(-102deg) scale(.94)}}
+@keyframes heroReveal{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}
+
+@media(max-width:1024px){
+  .topbar{width:calc(100% - 28px)}
+  .greeting-card-cover{width:min(790px,calc(100vw - 44px));min-height:460px}
+  .birthday-hero.card-open-stage{padding-inline:16px}
+  .card-open-stage .hero-copy{width:min(820px,calc(100vw - 28px))}
+  .card-open-stage .interaction-scene{width:min(560px,70vw)}
+  .book-wrap{width:min(960px,100%)}
+  .paper{padding-inline:clamp(32px,4vw,48px)}
+}
+
+@media(max-width:700px){
+  .topbar{top:max(10px,env(safe-area-inset-top));width:calc(100% - 20px);min-height:54px;padding:6px 7px 6px 14px}
+  .top-actions{gap:5px}.icon-action{width:42px;height:42px}.language-switch{min-height:42px;padding-inline:10px}
+  .card-cover-stage{display:grid;min-height:100svh;padding:82px 12px max(22px,env(safe-area-inset-bottom));place-items:center}
+  .card-cover-stage .rainbow-orbit{top:50%;width:145vw}
+  .greeting-card-cover{width:min(520px,calc(100vw - 24px));min-height:min(560px,calc(100svh - 112px));aspect-ratio:auto}
+  .greeting-card-edge{inset:9px -7px -9px 7px;border-radius:29px}
+  .greeting-card-inner{padding:42px 20px;border-radius:27px;box-shadow:inset 0 0 0 7px rgb(255 255 255 / 34%),inset 0 0 0 8px rgb(78 139 99 / 12%)}
+  .cover-sparkle{width:30px;height:30px;margin-bottom:13px}.greeting-card-inner .eyebrow{margin-bottom:16px;font-size:.7rem}
+  .greeting-card-inner>h1.single-line-title{font-size:clamp(1.05rem,5.65vw,2rem);letter-spacing:-.055em}
+  .greeting-card-inner>h1.thai-title{max-width:420px;font-size:clamp(1.35rem,6.5vw,2rem);line-height:1.35;white-space:normal}
+  .cover-divider{margin-block:24px 18px}.cover-message{max-width:290px;margin-bottom:24px;font-size:1.08rem}
+  .open-card-button{min-width:176px;min-height:50px}
+
+  .birthday-hero.card-open-stage{min-height:max(840px,100svh);padding:94px 10px 72px;justify-content:center}
+  .card-open-stage .rainbow-orbit{top:43%;width:142vw}
+  .card-open-stage .hero-copy{width:100%;max-width:560px}
+  .card-open-stage .hero-copy>h1.single-line-title{font-size:clamp(1.04rem,5.5vw,2rem)}
+  .card-open-stage .hero-copy>h1.thai-title{max-width:94%;margin-inline:auto;font-size:clamp(1.28rem,5.7vw,1.8rem);line-height:1.35;white-space:normal}
+  .card-open-stage .hero-body{max-width:92%;margin-top:14px;line-height:1.65}
+  .card-open-stage .interaction-scene{width:min(560px,calc(100vw - 20px));margin-top:20px}
+  .card-open-stage .interaction-card{min-height:214px;padding:34px 20px 58px;border-radius:25px}
+  .interaction-card::before{inset:8px;border-radius:19px}.interaction-card h2{font-size:clamp(1.22rem,6vw,1.55rem)}
+  .interaction-actions{min-height:72px;padding:0 34px}.party-button,.gift-button{min-height:48px}.skip-button{right:13px;bottom:13px;min-width:44px;min-height:36px}
+  .celebration-step-4 .interaction-scene{transform:translateY(24px)}
+  .card-dog{left:14px;width:clamp(96px,27vw,126px);transform:translate(-46%,-68%) rotate(2deg)}
+  .dog-arrival-copy{max-width:92%;white-space:normal}
+  .star-progress span{white-space:normal}
+
+  .journal-section{padding:82px 8px max(58px,env(safe-area-inset-bottom))}
+  .journal-heading-row{width:calc(100% - 20px);margin-bottom:22px}.journal-heading-row h2{font-size:clamp(2rem,10vw,2.7rem)}
+  .book-wrap{width:100%;padding:6px 0}.book{display:flex;padding:7px;flex-direction:column;border-width:2px;border-radius:21px}
+  .paper{min-height:560px;padding:34px 24px 130px}.paper-right{min-height:430px;padding-bottom:110px}
+  .paper-topline{gap:10px;font-size:.7rem}.entry-copy h3{font-size:clamp(1.55rem,8vw,1.9rem)}.entry-copy p{font-size:1rem;line-height:1.9}
+  .scrollable-entry{max-height:390px}.quote-page blockquote{font-size:clamp(1.2rem,6vw,1.55rem)}.signature{margin-top:30px}.diary-hint{bottom:22%}
+  .page-controls{width:calc(100% - 10px);min-height:48px}.page-controls>button{min-width:44px;min-height:44px}.fortune-button{width:40px;height:40px}
+}
+
+@media(max-width:430px){
+  .wordmark span{display:none}.language-switch{gap:5px;padding-inline:8px}.language-switch button{font-size:.82rem}
+  .greeting-card-cover{min-height:min(535px,calc(100svh - 104px))}.greeting-card-inner{padding-inline:16px}
+  .birthday-hero.card-open-stage{min-height:max(800px,100svh)}
+  .card-open-stage .interaction-card{padding-inline:16px}.interaction-actions{padding-inline:26px}
+  .collect-star,.ordinary-star{width:46px;height:46px}.collect-star span,.ordinary-star span{font-size:1.45rem}
+  .paper{padding-inline:20px}.paper::before{inset:10px}.scrollable-entry{max-height:370px}
+}
+
+@media(max-height:600px) and (orientation:landscape){
+  .card-cover-stage{min-height:680px;padding-top:80px}.greeting-card-cover{width:min(680px,80vw);min-height:410px}
+  .birthday-hero.card-open-stage{min-height:760px}
+}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}

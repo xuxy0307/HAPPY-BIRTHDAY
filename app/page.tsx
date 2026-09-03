@@ -13,7 +13,7 @@ const copy = {
   zh: {
     musicOn: '关闭音乐', musicOff: '播放音乐', musicError: '音乐暂时无法播放，请再试一次。', heroKicker: '今天的快乐加载中', heroTitle: 'name，祝你快乐，不止生日！', heroBody: '',
     steps: [
-      { title: '准备好接收生日惊喜了吗？', body: '点击按钮，让今天变成一场只为你举办的彩虹派对。', button: '开启生日派对' },
+      { title: '准备好接收生日惊喜了吗？', body: '点击按钮，让今天变成一场只为你举办的彩虹派对。', button: '打开生日贺卡' },
       { title: '惊喜其实藏就在身边不起眼的地方', body: '愿你永远有人惦记、有人撑腰，也永远拥有选择快乐的勇气。', button: '寻找彩虹星星' },
       { title: '收集五颗彩虹星，就可以许愿啦~', body: '找到五颗彩虹星星，每一颗都藏着惊喜哦。', button: '' },
       { title: '闭上眼睛，许个愿吧', body: '愿望不必告诉任何人，轻轻吹灭蜡烛，它会替你保守秘密。', button: '吹灭蜡烛' },
@@ -29,7 +29,7 @@ const copy = {
   th: {
     musicOn: 'ปิดเพลง', musicOff: 'เปิดเพลง', musicError: 'ยังเล่นเพลงไม่ได้ กรุณาลองอีกครั้ง', heroKicker: 'กำลังโหลดความสุขของวันนี้', heroTitle: 'name ขอให้มีความสุข ไม่ใช่แค่วันเกิด!', heroBody: '',
     steps: [
-      { title: 'พร้อมรับเซอร์ไพรส์วันเกิดหรือยัง?', body: 'แตะปุ่มแล้วให้วันนี้กลายเป็นปาร์ตี้สายรุ้งที่จัดขึ้นเพื่อเธอคนเดียว', button: 'เริ่มปาร์ตี้วันเกิด' },
+      { title: 'พร้อมรับเซอร์ไพรส์วันเกิดหรือยัง?', body: 'แตะปุ่มแล้วให้วันนี้กลายเป็นปาร์ตี้สายรุ้งที่จัดขึ้นเพื่อเธอคนเดียว', button: 'เปิดการ์ดวันเกิด' },
       { title: 'เซอร์ไพรส์ซ่อนอยู่ในมุมเล็ก ๆ ใกล้ตัวเรา', body: 'ขอให้มีคนคิดถึง คอยอยู่ข้าง ๆ และมีความกล้าที่จะเลือกความสุขให้ตัวเองเสมอ', button: 'ตามหาดาวสายรุ้ง' },
       { title: 'เก็บดาวสายรุ้งให้ครบห้าดวง แล้วก็อธิษฐานได้เลย~', body: 'ตามหาดาวสายรุ้งทั้งห้าดวง แต่ละดวงมีเซอร์ไพรส์ซ่อนอยู่นะ', button: '' },
       { title: 'หลับตาแล้วอธิษฐานนะ', body: 'ไม่ต้องบอกใคร เพียงเป่าเทียนเบา ๆ แล้วมันจะช่วยเก็บความลับให้เธอ', button: 'เป่าเทียน' },
@@ -219,6 +219,7 @@ export default function Home() {
   const [birthdayNow, setBirthdayNow] = useState<Date | null>(null);
   const [journalDogScene, setJournalDogScene] = useState<{ dogIndex: number; motion: (typeof dogMotions)[number]; start: number }>({ dogIndex: 0, motion: dogMotions[0], start: 8 });
   const [notice, setNotice] = useState('');
+  const [isCardOpening, setIsCardOpening] = useState(false);
   const journalRef = useRef<HTMLElement | null>(null);
   const touchStart = useRef<number | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -267,8 +268,6 @@ export default function Home() {
     void audio.play().catch(() => showNotice(t.musicError));
   }
   function advanceCelebration() {
-    if (celebrationStep === 0) startMusicFromGesture();
-
     if (celebrationStep === 1) {
       setStarsFound([]);
       const previousSignature = readStoredSequence(STAR_LAYOUT_STORAGE_KEY) || starLayoutSignature(starLayout);
@@ -278,6 +277,15 @@ export default function Home() {
       setCelebrationStep(2);
     }
     else setCelebrationStep((value) => Math.min(value + 1, 4));
+  }
+  function openBirthdayCard() {
+    if (isCardOpening || celebrationStep !== 0) return;
+    startMusicFromGesture();
+    setIsCardOpening(true);
+    window.setTimeout(() => {
+      setCelebrationStep(1);
+      setIsCardOpening(false);
+    }, 720);
   }
   function collectStar(index: number) { if (starsFound.includes(index)) return; const next = [...starsFound, index]; setStarsFound(next); showNotice(t.starNotes[index]); if (next.length === 5) window.setTimeout(() => setCelebrationStep(3), 650); }
   function blowCandle() { if (candleOut) return; setCandleOut(true); showNotice(t.wishMade); window.setTimeout(() => setCelebrationStep(4), 900); }
@@ -323,8 +331,19 @@ export default function Home() {
         </div>
       </header>
 
-      <section className={`birthday-hero celebration-step-${celebrationStep}`} aria-labelledby="birthday-title">
+      <section className={`birthday-hero celebration-step-${celebrationStep} ${celebrationStep === 0 ? 'card-cover-stage' : 'card-open-stage'}`} aria-labelledby="birthday-title">
         <div className="rainbow-orbit" aria-hidden="true"><i /><i /><i /><i /><i /></div>
+        {celebrationStep === 0 ? <div className={`greeting-card-cover ${isCardOpening ? 'is-opening' : ''}`}>
+          <div className="greeting-card-edge" aria-hidden="true" />
+          <div className="greeting-card-inner">
+            <Sparkles className="cover-sparkle" aria-hidden="true" />
+            <p className="eyebrow">{t.heroKicker}</p>
+            <h1 id="birthday-title" className={`single-line-title ${language === 'th' ? 'thai-title' : ''}`}>{language === 'zh' ? <>name，祝你<span className="happy-emphasis">快乐</span>，不止生日！</> : <>name ขอให้มี<span className="happy-emphasis">ความสุข</span> ไม่ใช่แค่วันเกิด!</>}</h1>
+            <div className="cover-divider" aria-hidden="true"><i /><i /><i /></div>
+            <p className="cover-message">{stepCopy.title}</p>
+            <Button className="party-button open-card-button" onPointerDown={startMusicFromGesture} onClick={openBirthdayCard} disabled={isCardOpening}><BookHeart aria-hidden="true" />{stepCopy.button}</Button>
+          </div>
+        </div> : <>
         {celebrationStep > 0 && <div className="confetti-field" aria-hidden="true">{Array.from({ length: 28 }).map((_, index) => <i key={index} style={{ left: `${(index * 37) % 100}%`, animationDelay: `${-(index % 9) * .33}s` }} />)}</div>}
         {giftOpened && <div className="dog-gang" aria-label={language === 'zh' ? '五只小狗动画角色' : 'ตัวละครสุนัขทั้งห้า'}>
           {dogs.slice(0, 4).map((dog, index) => <figure className={`dog-character dog-${index + 1} ${revealedDogIndices.includes(index) ? 'is-revealed' : ''}`} key={dog.src}><DogCutoutImage src={dog.src} alt={language === 'zh' ? dog.zh : dog.th} /><figcaption>{language === 'zh' ? dog.zh : dog.th}</figcaption></figure>)}
@@ -343,16 +362,17 @@ export default function Home() {
               <span className="step-number">0{celebrationStep + 1}</span>
               <h2>{cardTitle}</h2>
               <div className="interaction-actions">
-                {celebrationStep === 2 ? <div className="star-progress"><span>{t.starFound} {starsFound.length} / 5 {t.starUnit}</span><i style={{ width: `${starsFound.length / 5 * 100}%` }} /></div> : celebrationStep === 3 ? <button className={`candle-interaction ${candleOut ? 'is-out' : ''}`} onClick={blowCandle}><span className="birthday-candle-visual" aria-hidden="true"><b>{candleOut ? '' : '🎂'}</b>{candleOut ? <em className="wish-fireworks"><i /><i /><i /></em> : <><i className="flame-burst burst-one" /><i className="flame-burst burst-two" /><i className="flame-burst burst-three" /></>}</span><strong>{stepCopy.button}</strong></button> : celebrationStep === 4 ? allDogsRevealed ? <Button className="party-button" onClick={scrollToJournal}><BookHeart aria-hidden="true" />{t.journalButton}</Button> : <button className={`gift-button ${giftOpened ? 'is-opening' : ''}`} onClick={openGift} disabled={giftOpened}><Gift aria-hidden="true" /><strong>{giftOpened ? t.giftOpening : stepCopy.button}</strong></button> : <Button className="party-button" onPointerDown={celebrationStep === 0 ? startMusicFromGesture : undefined} onClick={advanceCelebration}><Sparkles aria-hidden="true" />{stepCopy.button}</Button>}
+                {celebrationStep === 2 ? <div className="star-progress"><span>{t.starFound} {starsFound.length} / 5 {t.starUnit}</span><i style={{ width: `${starsFound.length / 5 * 100}%` }} /></div> : celebrationStep === 3 ? <button className={`candle-interaction ${candleOut ? 'is-out' : ''}`} onClick={blowCandle}><span className="birthday-candle-visual" aria-hidden="true"><b>{candleOut ? '' : '🎂'}</b>{candleOut ? <em className="wish-fireworks"><i /><i /><i /></em> : <><i className="flame-burst burst-one" /><i className="flame-burst burst-two" /><i className="flame-burst burst-three" /></>}</span><strong>{stepCopy.button}</strong></button> : celebrationStep === 4 ? allDogsRevealed ? <Button className="party-button" onClick={scrollToJournal}><BookHeart aria-hidden="true" />{t.journalButton}</Button> : <button className={`gift-button ${giftOpened ? 'is-opening' : ''}`} onClick={openGift} disabled={giftOpened}><Gift aria-hidden="true" /><strong>{giftOpened ? t.giftOpening : stepCopy.button}</strong></button> : <Button className="party-button" onClick={advanceCelebration}><Sparkles aria-hidden="true" />{stepCopy.button}</Button>}
                 {celebrationStep < 4 && <button className="skip-button" onClick={skipInteraction}>{t.skip}</button>}
               </div>
             </div>
           </div>
         </div>
         {allDogsRevealed && <button className="scroll-cue" onClick={scrollToJournal}><span>{t.scrollHint}</span><ArrowDown aria-hidden="true" /></button>}
+        </>}
       </section>
 
-      <section className="journal-section" id="journal" ref={journalRef} aria-labelledby="journal-heading">
+      {celebrationStep > 0 && <section className="journal-section" id="journal" ref={journalRef} aria-labelledby="journal-heading">
         <div className="journal-heading-row"><div>{t.journal && <p className="eyebrow">{t.journal}</p>}<h2 id="journal-heading">{t.chapter}</h2><p>{t.journalIntro}</p></div></div>
         <div className="book-wrap">
           <div className={`book book-turn-${direction}`} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
@@ -373,7 +393,7 @@ export default function Home() {
           </div>
         </div>
         <nav className="page-controls" aria-label={t.journal || t.chapter}><Button variant="ghost" onClick={() => changePage(-1)} disabled={page === 0}><ChevronLeft aria-hidden="true" />{t.previous}</Button><div className="page-status"><span>{t.page} {page + 1} / {allEntries.length}</span><button className="fortune-button" onClick={openFortune} aria-label={t.fortuneLabel}><Gift aria-hidden="true" /></button></div><Button variant="ghost" onClick={() => changePage(1)} disabled={page === allEntries.length - 1}>{t.next}<ChevronRight aria-hidden="true" /></Button></nav>
-      </section>
+      </section>}
       {notice && <output className="toast" aria-live="polite">{notice}</output>}
     </main>
   );
