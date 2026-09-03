@@ -53,7 +53,7 @@ const dogs = [
 ];
 
 export default function Home() {
-  const [language, setLanguage] = useState<Language>('zh');
+  const [language, setLanguage] = useState<Language>('th');
   const [celebrationStep, setCelebrationStep] = useState(0);
   const [starsFound, setStarsFound] = useState<number[]>([]);
   const [candleOut, setCandleOut] = useState(false);
