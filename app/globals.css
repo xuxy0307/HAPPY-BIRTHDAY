@@ -217,13 +217,13 @@ body{overflow-x:hidden}button{touch-action:manipulation}
 }
 
 /* Keep interactive elements anchored to the card across aspect ratios. */
-.interaction-scene>.dog-gang{position:absolute;z-index:1;inset:-155px -300px -165px;pointer-events:none}
+.interaction-scene>.dog-gang{position:absolute;z-index:4;inset:-155px -300px -165px;height:auto;pointer-events:none}
 .interaction-scene>.dog-gang .dog-1{left:10%;right:auto;top:auto;bottom:0}
 .interaction-scene>.dog-gang .dog-2{right:8%;left:auto;top:0;bottom:auto}
 .interaction-scene>.dog-gang .dog-3{left:11%;right:auto;top:0;bottom:auto}
 .interaction-scene>.dog-gang .dog-4{right:10%;left:auto;top:auto;bottom:0}
 .title-name-anchor{position:relative;display:inline-block}
-.title-dog{z-index:4;left:50%;bottom:calc(100% + 10px);width:clamp(100px,10vw,140px);height:auto;aspect-ratio:.72;transform:translateX(-50%) rotate(2deg);pointer-events:none}
+.title-dog{z-index:6;left:50%;bottom:calc(100% + 10px);width:clamp(100px,10vw,140px);height:clamp(135px,15vw,190px);transform:translateX(-50%) rotate(2deg);pointer-events:none}
 .title-dog img{object-fit:contain}
 .celebration-step-4.gift-opened .interaction-scene{margin-top:180px;transform:none}
 .star-hunt{z-index:45}
@@ -232,19 +232,25 @@ body{overflow-x:hidden}button{touch-action:manipulation}
 
 @media(max-width:700px){
   .interaction-scene>.dog-gang{inset:-108px -66px -128px}
-  .interaction-scene>.dog-gang .dog-1{left:4%;bottom:0;width:106px}
-  .interaction-scene>.dog-gang .dog-2{right:1%;top:0;width:128px}
+  .interaction-scene>.dog-gang .dog-1{left:13%;bottom:0;width:106px}
+  .interaction-scene>.dog-gang .dog-2{right:13%;top:8px;width:105px}
   .interaction-scene>.dog-gang .dog-3{left:3%;top:0;width:96px}
-  .interaction-scene>.dog-gang .dog-4{right:6%;bottom:0;width:84px}
-  .title-dog{bottom:calc(100% + 7px);width:clamp(82px,23vw,104px)}
+  .interaction-scene>.dog-gang .dog-4{right:13%;bottom:0;width:84px}
+  .title-dog{bottom:calc(100% + 7px);width:clamp(82px,23vw,104px);height:clamp(112px,31vw,145px)}
   .celebration-step-4.gift-opened .interaction-scene{margin-top:140px;transform:none}
-  .card-dog{transform:translate(-42%,-60%) rotate(2deg)}
+  .card-dog{left:36px;transform:translate(-42%,-60%) rotate(2deg)}
   .skip-button{right:18px;bottom:15px;padding:2px 0;font-size:.58rem}
 }
 
 @media(min-width:701px) and (orientation:portrait){
   .interaction-scene>.dog-gang{inset:-135px -170px -150px}
-  .interaction-scene>.dog-gang .dog-1{left:4%;width:155px}.interaction-scene>.dog-gang .dog-2{right:1%;width:190px}
-  .interaction-scene>.dog-gang .dog-3{left:5%;width:145px}.interaction-scene>.dog-gang .dog-4{right:5%;width:125px}
+  .interaction-scene>.dog-gang .dog-1{left:9%;width:155px}.interaction-scene>.dog-gang .dog-2{right:9%;width:190px}
+  .interaction-scene>.dog-gang .dog-3{left:9%;width:145px}.interaction-scene>.dog-gang .dog-4{right:10%;width:125px}
+}
+@media(min-width:701px) and (max-width:920px) and (orientation:landscape){
+  .interaction-scene>.dog-gang{inset:-135px -110px -145px}
+  .interaction-scene>.dog-gang .dog-1{left:7%;width:150px}
+  .interaction-scene>.dog-gang .dog-2{right:5%;top:6px;width:170px}
+  .interaction-scene>.dog-gang .dog-4{right:8%;width:110px}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
