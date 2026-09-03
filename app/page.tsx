@@ -346,7 +346,7 @@ export default function Home() {
           <div className="greeting-card-inner">
             <Sparkles className="cover-sparkle" aria-hidden="true" />
             <p className="eyebrow">{t.heroKicker}</p>
-            <h1 id="birthday-title" className={`single-line-title ${language === 'th' ? 'thai-title' : ''}`}>{language === 'zh' ? <>name，祝你<span className="happy-emphasis">快乐</span>，不止生日！</> : <>name ขอให้มี<span className="happy-emphasis">ความสุข</span> ไม่ใช่แค่วันเกิด!</>}</h1>
+            <h1 id="birthday-title" className={`single-line-title ${language === 'th' ? 'thai-title' : ''}`}>{language === 'zh' ? <><span className="title-name-anchor">name</span>，祝你<span className="happy-emphasis">快乐</span>，不止生日！</> : <><span className="title-name-anchor">name</span> ขอให้มี<span className="happy-emphasis">ความสุข</span> ไม่ใช่แค่วันเกิด!</>}</h1>
             <div className="cover-divider" aria-hidden="true"><i /><i /><i /></div>
             <p className="cover-message">{stepCopy.title}</p>
             <Button className="party-button open-card-button" onPointerDown={startMusicFromGesture} onClick={openBirthdayCard} disabled={isCardOpening}><BookHeart aria-hidden="true" />{stepCopy.button}</Button>
@@ -359,11 +359,11 @@ export default function Home() {
         </div>}
         <div className="hero-copy">
           <p className="eyebrow">{t.heroKicker}</p>
-          <h1 id="birthday-title" className={`single-line-title ${language === 'th' ? 'thai-title' : ''}`}>{language === 'zh' ? <>name，祝你<span className="happy-emphasis">快乐</span>，不止生日！</> : <>name ขอให้มี<span className="happy-emphasis">ความสุข</span> ไม่ใช่แค่วันเกิด!</>}</h1>
+          <h1 id="birthday-title" className={`single-line-title ${language === 'th' ? 'thai-title' : ''}`}>{language === 'zh' ? <><span className="title-name-anchor">name{giftOpened && <span className={`dog-character title-dog ${revealedDogIndices.includes(2) ? 'is-revealed' : ''}`} aria-hidden="true"><DogCutoutImage src={dogs[2].src} alt="" /></span>}</span>，祝你<span className="happy-emphasis">快乐</span>，不止生日！</> : <><span className="title-name-anchor">name{giftOpened && <span className={`dog-character title-dog ${revealedDogIndices.includes(2) ? 'is-revealed' : ''}`} aria-hidden="true"><DogCutoutImage src={dogs[2].src} alt="" /></span>}</span> ขอให้มี<span className="happy-emphasis">ความสุข</span> ไม่ใช่แค่วันเกิด!</>}</h1>
           {heroBody && <p className={`hero-body ${giftOpened ? 'dog-arrival-copy' : ''}`}>{heroBody}</p>}
           <div className="interaction-scene">
             {giftOpened && <div className="dog-gang" aria-label={language === 'zh' ? '五只小狗动画角色' : 'ตัวละครสุนัขทั้งห้า'}>
-              {dogs.slice(0, 4).map((dog, index) => <figure className={`dog-character dog-${index + 1} ${revealedDogIndices.includes(index) ? 'is-revealed' : ''}`} key={dog.src}><DogCutoutImage src={dog.src} alt={language === 'zh' ? dog.zh : dog.th} /><figcaption>{language === 'zh' ? dog.zh : dog.th}</figcaption></figure>)}
+              {[0, 1, 3].map((index) => { const dog = dogs[index]; return <figure className={`dog-character dog-${index + 1} ${revealedDogIndices.includes(index) ? 'is-revealed' : ''}`} key={dog.src}><DogCutoutImage src={dog.src} alt={language === 'zh' ? dog.zh : dog.th} /><figcaption>{language === 'zh' ? dog.zh : dog.th}</figcaption></figure>; })}
             </div>}
             {giftOpened && <figure className={`dog-character card-dog ${revealedDogIndices.includes(4) ? 'is-revealed' : ''}`}><DogCutoutImage src={dogs[4].src} alt={language === 'zh' ? dogs[4].zh : dogs[4].th} /><figcaption>{language === 'zh' ? dogs[4].zh : dogs[4].th}</figcaption></figure>}
             <div className="interaction-card" aria-live="polite">
