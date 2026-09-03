@@ -9,20 +9,17 @@ npm install
 npm run dev
 ```
 
-浏览器访问终端显示的本地地址。管理演示口令为 `winnoe`。
+浏览器访问终端显示的本地地址。
 
 背景音乐使用 `public/audio/kawaii-fifth.mp3`，通过页面右上角的音乐按钮播放或暂停，并自动循环。
 
-## Demo 数据说明
+## 日记维护
 
-- 新增日记与上传照片保存在当前浏览器的 `localStorage` 中。
-- 更换浏览器或设备后，数据不会自动同步。
-- 这个前端口令只用于演示交互，不能作为正式的权限保护。
-- 正式上线并实现“winnoe 编辑、name 只读”时，需要接入账号鉴权与云端数据库/对象存储。
+日记内容统一保存在 `app/journal-data.ts`。作者 在 GitHub 上编辑并提交这个文件后，GitHub Actions 会自动重新构建和发布网页，寿星都会看到更新后的内容。
 
 ## 小狗角色素材
 
-五张动画角色图位于 `public/dogs/`，分别对应用户提供的小狗照片。蓝陨石牧羊犬角色已去除背心、项圈和牵引链。网页通过 CSS 为角色添加漂浮、跳跃与庆祝动作，原始角色图保持静态 PNG，便于后续替换和优化。
+五张动画角色图位于 `public/dogs/`。
 
 ## 构建
 
@@ -34,12 +31,18 @@ npm run build
 
 ## 部署到 GitHub Pages
 
-项目已经包含 `.github/workflows/deploy-pages.yml`。首次部署时：
+项目已经包含 `.github/workflows/deploy-pages.yml`。如果不使用 Git，可以直接通过 GitHub 网页上传：
 
-1. 在 GitHub 新建一个空仓库。
-2. 将此项目提交并推送到仓库的 `main` 分支。
-3. 打开仓库的 **Settings → Pages**，将 **Source** 设置为 **GitHub Actions**。
-4. 打开 **Actions** 页面等待 `Deploy birthday card to GitHub Pages` 完成。
-5. 部署地址会显示在任务的 `deploy` 步骤和 **Settings → Pages** 中。
+1. 在 GitHub 新建一个公开仓库。
+2. 在仓库的 **Code** 页面点击 **Add file → Upload files**，上传项目内的全部文件和文件夹。
+3. 确认仓库中包含 `.github/workflows/deploy-pages.yml` 和 `.openai/hosting.json`。
+4. 打开 **Settings → Pages**，将 **Source** 设置为 **GitHub Actions**。
+5. 打开 **Actions** 页面，等待 `Deploy birthday card to GitHub Pages` 显示绿色对勾。
+6. 部署完成后，可在 **Settings → Pages** 查看公开访问链接。
 
-以后每次推送到 `main` 分支都会自动重新构建和发布。工作流会自动识别仓库子路径，因此普通项目仓库和 `用户名.github.io` 仓库都可以使用。
+以后每次在 GitHub 网页中编辑文件，或使用 **Add file → Upload files** 覆盖更新文件并提交到 `main` 分支，GitHub Actions 都会自动重新构建和发布。
+
+普通项目仓库的地址格式通常为：
+
+```text
+https://用户名.github.io/仓库名/
