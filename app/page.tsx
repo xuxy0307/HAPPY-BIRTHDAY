@@ -20,7 +20,7 @@ const copy = {
       { title: '还有一份礼物等你拆开', body: '愿望已经收好啦。点击礼物，看看是谁来参加你的生日派对。', button: '打开生日礼物' },
     ],
     starFound: '已收集', starUnit: '颗彩虹星', starNotes: ['第一颗：愿你自在地做自己。', '第二颗：愿所有真心都有回应。', '第三颗：愿好运总在转角等你。', '第四颗：愿每次勇敢都带你靠近喜欢的生活。', '第五颗：愿姐姐的爱一直陪在你身边。'],
-    wishMade: '愿望已经被彩虹悄悄收藏。', skip: '跳过互动', giftOpening: '小狗们正在赶来…', finalTitle: '五位快乐特派员到齐啦！', finalBody: '五位快乐特派员来咯！', journalButton: '翻开我们的日记', scrollHint: '继续向下，是姐姐写给你的日记', journal: '', chapter: '写给妹妹的每一天', journalIntro: '愿你不只生日快乐，也在每个普通日子里被温柔接住。',
+    wishMade: '愿望已经被彩虹悄悄收藏。', skip: '跳过互动', giftOpening: '小狗们正在赶来…', finalTitle: '五位快乐特派员到齐啦！', finalBody: '', journalButton: '翻开我们的日记', scrollHint: '继续向下，是姐姐写给你的日记', journal: '', chapter: '写给妹妹的每一天', journalIntro: '愿你不只生日快乐，也在每个普通日子里被温柔接住。',
     previous: '上一页', next: '下一页', page: '页', birthdayTitle: '亲爱的 name，生日快乐呀',
     birthdayBody: ['姐姐不会说特别动听的话，不习惯肉麻的话挂在嘴边，但姐姐想让你知道，你是一个很棒的女孩子，又善良、又可爱、又努力、又聪明。', '今天你又长大了一岁，在外面你是一个大孩子，需要勇敢、坚强。但是在姐姐这里，你永远都是个小女孩，我会一直为你加油。', '新的一岁，希望你能遇见善良的人，能够去做真正喜欢的事，也有足够的勇气选择让自己开心的生活。', '要记住，累了就休息，难过了就去吃好吃的，工作要注意劳逸结合，想姐姐就call我，姐姐一直都在滴。', '对了，以后姐姐想你的时候，会把悄悄话写在这里，你有空了就来看哦，我的祝福一定是最长最持久的哈哈！'],
     birthdayQuote: '愿你不只是今天快乐，而是在许多个普通的日子里，也能发现值得开心的小事。', sign: '永远爱你的姐姐', diaryHint: '往后的日子，也会一页一页写进这里。', emptyPhoto: '这一页，留给下一次见面的照片。',
@@ -36,7 +36,7 @@ const copy = {
       { title: 'ยังมีของขวัญอีกชิ้นรอให้เปิด', body: 'คำอธิษฐานถูกเก็บไว้อย่างดีแล้ว แตะของขวัญเพื่อดูว่าใครมาร่วมงานวันเกิดของเธอ', button: 'เปิดของขวัญวันเกิด' },
     ],
     starFound: 'เก็บแล้ว', starUnit: 'ดวงสายรุ้ง', starNotes: ['ดวงแรก: ขอให้เป็นตัวเองได้อย่างอิสระ', 'ดวงที่สอง: ขอให้ทุกความจริงใจได้รับการตอบรับ', 'ดวงที่สาม: ขอให้โชคดีรออยู่ตรงทุกหัวมุม', 'ดวงที่สี่: ขอให้ทุกความกล้าพาเธอเข้าใกล้ชีวิตที่ชอบ', 'ดวงที่ห้า: ขอให้ความรักจากพี่อยู่ข้างเธอเสมอ'],
-    wishMade: 'สายรุ้งเก็บคำอธิษฐานของเธอไว้แล้ว', skip: 'ข้ามกิจกรรม', giftOpening: 'แก๊งน้องหมากำลังมา…', finalTitle: 'ทูตแห่งความสุขทั้งห้ามาครบแล้ว!', finalBody: 'ทูตแห่งความสุขทั้งห้ามาแล้ว!', journalButton: 'เปิดบันทึกของเรา', scrollHint: 'เลื่อนลงไปอ่านบันทึกที่พี่เขียนถึงเธอ', journal: '', chapter: 'ถึงน้องสาวของพี่ ในทุก ๆ วัน', journalIntro: 'ขอให้เธอมีความสุขไม่ใช่แค่ในวันเกิด แต่ได้รับความอ่อนโยนในทุกวันธรรมดา',
+    wishMade: 'สายรุ้งเก็บคำอธิษฐานของเธอไว้แล้ว', skip: 'ข้ามกิจกรรม', giftOpening: 'แก๊งน้องหมากำลังมา…', finalTitle: 'ทูตแห่งความสุขทั้งห้ามาครบแล้ว!', finalBody: '', journalButton: 'เปิดบันทึกของเรา', scrollHint: 'เลื่อนลงไปอ่านบันทึกที่พี่เขียนถึงเธอ', journal: '', chapter: 'ถึงน้องสาวของพี่ ในทุก ๆ วัน', journalIntro: 'ขอให้เธอมีความสุขไม่ใช่แค่ในวันเกิด แต่ได้รับความอ่อนโยนในทุกวันธรรมดา',
     previous: 'หน้าก่อน', next: 'หน้าถัดไป', page: 'หน้า', birthdayTitle: 'ถึง name ที่รัก สุขสันต์วันเกิดนะ',
     birthdayBody: ['พี่อาจพูดคำเพราะ ๆ ไม่เก่ง และไม่คุ้นกับการพูดอะไรหวานเลี่ยน แต่พี่อยากให้เธอรู้ว่า เธอเป็นผู้หญิงที่ยอดเยี่ยมมาก ทั้งใจดี น่ารัก ขยัน และฉลาด', 'วันนี้เธอโตขึ้นอีกหนึ่งปีแล้ว เมื่ออยู่ข้างนอก เธอเป็นผู้ใหญ่ที่ต้องกล้าหาญและเข้มแข็ง แต่เมื่ออยู่กับพี่ เธอจะเป็นเด็กผู้หญิงตัวน้อยเสมอ พี่จะคอยเป็นกำลังใจให้เธอตลอดไป', 'ในปีใหม่ของชีวิต ขอให้เธอได้พบเจอคนใจดี ได้ทำสิ่งที่ชอบจริง ๆ และมีความกล้ามากพอที่จะเลือกชีวิตที่ทำให้ตัวเองมีความสุข', 'จำไว้นะ เหนื่อยก็พัก เสียใจก็ไปหาอะไรอร่อย ๆ กิน ทำงานก็ต้องรู้จักพักผ่อนให้สมดุล ถ้าคิดถึงพี่ก็โทรมา พี่อยู่ตรงนี้เสมอนะ', 'อ้อ แล้วต่อไปเวลาพี่คิดถึงเธอ พี่จะเขียนคำกระซิบไว้ที่นี่ ว่างเมื่อไรก็แวะมาอ่านนะ คำอวยพรของพี่จะต้องยาวนานและอยู่กับเธอนานที่สุดแน่นอน ฮ่า ๆ!'],
     birthdayQuote: 'ขอให้ไม่ใช่แค่วันนี้ที่มีความสุข แต่ในทุกวันธรรมดา ก็ยังมีเรื่องเล็ก ๆ ที่ทำให้เธอยิ้มได้', sign: 'จากพี่สาวที่รักเธอเสมอ', diaryHint: 'จากวันนี้ เรื่องราวของเราจะค่อย ๆ ถูกเขียนเพิ่มทีละหน้า', emptyPhoto: 'หน้านี้เก็บไว้สำหรับภาพถ่ายในครั้งต่อไปที่เราได้เจอกัน',
@@ -65,6 +65,13 @@ const starSlots: Omit<StarPosition, 'slot'>[] = [
   { top: 80, left: 20 }, { top: 82, left: 39 }, { top: 80, left: 59 }, { top: 81, left: 78 },
   { top: 31, left: 16 }, { top: 31, left: 79 },
 ];
+const compactStarSlots: Omit<StarPosition, 'slot'>[] = [
+  { top: 14, left: 9 }, { top: 14, left: 29 }, { top: 14, left: 50 }, { top: 14, left: 71 }, { top: 14, left: 91 },
+  { top: 29, left: 8 }, { top: 29, left: 92 },
+  { top: 55, left: 7 }, { top: 55, left: 93 },
+  { top: 70, left: 7 }, { top: 70, left: 93 },
+  { top: 86, left: 15 }, { top: 86, left: 38 }, { top: 86, left: 62 }, { top: 86, left: 85 },
+];
 
 function shuffledIndices(length: number) {
   const indices = Array.from({ length }, (_, index) => index);
@@ -79,8 +86,8 @@ function starLayoutSignature(layout: StarLayout) {
   return layout.rainbow.map((position) => position.slot).sort((a, b) => a - b).join(',');
 }
 
-function createStarLayout(previousSignature = ''): StarLayout {
-  let slotOrder = shuffledIndices(starSlots.length);
+function createStarLayout(previousSignature = '', slots = starSlots): StarLayout {
+  let slotOrder = shuffledIndices(slots.length);
   for (let attempt = 0; attempt < 12 && slotOrder.slice(0, 5).sort((a, b) => a - b).join(',') === previousSignature; attempt += 1) {
     slotOrder = shuffledIndices(starSlots.length);
   }
@@ -89,8 +96,8 @@ function createStarLayout(previousSignature = ''): StarLayout {
   }
   const shuffled = slotOrder.map((slot) => ({
     slot,
-    top: starSlots[slot].top + (Math.random() * 4 - 2),
-    left: starSlots[slot].left + (Math.random() * 4 - 2),
+    top: slots[slot].top + (Math.random() * 4 - 2),
+    left: slots[slot].left + (Math.random() * 4 - 2),
   }));
   return { rainbow: shuffled.slice(0, 5), ordinary: shuffled.slice(5) };
 }
@@ -271,7 +278,8 @@ export default function Home() {
     if (celebrationStep === 1) {
       setStarsFound([]);
       const previousSignature = readStoredSequence(STAR_LAYOUT_STORAGE_KEY) || starLayoutSignature(starLayout);
-      const nextLayout = createStarLayout(previousSignature);
+      const useCompactLayout = window.matchMedia('(max-width: 700px), (orientation: portrait)').matches;
+      const nextLayout = createStarLayout(previousSignature, useCompactLayout ? compactStarSlots : starSlots);
       storeSequence(STAR_LAYOUT_STORAGE_KEY, starLayoutSignature(nextLayout));
       setStarLayout(nextLayout);
       setCelebrationStep(2);
@@ -331,7 +339,7 @@ export default function Home() {
         </div>
       </header>
 
-      <section className={`birthday-hero celebration-step-${celebrationStep} ${celebrationStep === 0 ? 'card-cover-stage' : 'card-open-stage'}`} aria-labelledby="birthday-title">
+      <section className={`birthday-hero celebration-step-${celebrationStep} ${celebrationStep === 0 ? 'card-cover-stage' : 'card-open-stage'} ${giftOpened ? 'gift-opened' : ''}`} aria-labelledby="birthday-title">
         <div className="rainbow-orbit" aria-hidden="true"><i /><i /><i /><i /><i /></div>
         {celebrationStep === 0 ? <div className={`greeting-card-cover ${isCardOpening ? 'is-opening' : ''}`}>
           <div className="greeting-card-edge" aria-hidden="true" />
@@ -345,9 +353,6 @@ export default function Home() {
           </div>
         </div> : <>
         {celebrationStep > 0 && <div className="confetti-field" aria-hidden="true">{Array.from({ length: 28 }).map((_, index) => <i key={index} style={{ left: `${(index * 37) % 100}%`, animationDelay: `${-(index % 9) * .33}s` }} />)}</div>}
-        {giftOpened && <div className="dog-gang" aria-label={language === 'zh' ? '五只小狗动画角色' : 'ตัวละครสุนัขทั้งห้า'}>
-          {dogs.slice(0, 4).map((dog, index) => <figure className={`dog-character dog-${index + 1} ${revealedDogIndices.includes(index) ? 'is-revealed' : ''}`} key={dog.src}><DogCutoutImage src={dog.src} alt={language === 'zh' ? dog.zh : dog.th} /><figcaption>{language === 'zh' ? dog.zh : dog.th}</figcaption></figure>)}
-        </div>}
         {celebrationStep === 2 && <div className="star-hunt">
           <div className="ordinary-star-field" aria-hidden="true">{starLayout.ordinary.map((position, index) => <span className="ordinary-star" key={position.slot} style={{ top: `${position.top}%`, left: `${position.left}%`, animationDelay: `${-index * .19}s` }}><span>★</span></span>)}</div>
           {[0, 1, 2, 3, 4].map((index) => <button key={index} className={`collect-star ${starsFound.includes(index) ? 'is-found' : ''}`} style={{ top: `${starLayout.rainbow[index].top}%`, left: `${starLayout.rainbow[index].left}%`, animationDelay: `${-index * .28}s` }} onClick={() => collectStar(index)} aria-label={`${t.starFound} ${index + 1}`}><span>★</span></button>)}
@@ -357,14 +362,17 @@ export default function Home() {
           <h1 id="birthday-title" className={`single-line-title ${language === 'th' ? 'thai-title' : ''}`}>{language === 'zh' ? <>name，祝你<span className="happy-emphasis">快乐</span>，不止生日！</> : <>name ขอให้มี<span className="happy-emphasis">ความสุข</span> ไม่ใช่แค่วันเกิด!</>}</h1>
           {heroBody && <p className={`hero-body ${giftOpened ? 'dog-arrival-copy' : ''}`}>{heroBody}</p>}
           <div className="interaction-scene">
+            {giftOpened && <div className="dog-gang" aria-label={language === 'zh' ? '五只小狗动画角色' : 'ตัวละครสุนัขทั้งห้า'}>
+              {dogs.slice(0, 4).map((dog, index) => <figure className={`dog-character dog-${index + 1} ${revealedDogIndices.includes(index) ? 'is-revealed' : ''}`} key={dog.src}><DogCutoutImage src={dog.src} alt={language === 'zh' ? dog.zh : dog.th} /><figcaption>{language === 'zh' ? dog.zh : dog.th}</figcaption></figure>)}
+            </div>}
             {giftOpened && <figure className={`dog-character card-dog ${revealedDogIndices.includes(4) ? 'is-revealed' : ''}`}><DogCutoutImage src={dogs[4].src} alt={language === 'zh' ? dogs[4].zh : dogs[4].th} /><figcaption>{language === 'zh' ? dogs[4].zh : dogs[4].th}</figcaption></figure>}
             <div className="interaction-card" aria-live="polite">
               <span className="step-number">0{celebrationStep + 1}</span>
               <h2>{cardTitle}</h2>
               <div className="interaction-actions">
                 {celebrationStep === 2 ? <div className="star-progress"><span>{t.starFound} {starsFound.length} / 5 {t.starUnit}</span><i style={{ width: `${starsFound.length / 5 * 100}%` }} /></div> : celebrationStep === 3 ? <button className={`candle-interaction ${candleOut ? 'is-out' : ''}`} onClick={blowCandle}><span className="birthday-candle-visual" aria-hidden="true"><b>{candleOut ? '' : '🎂'}</b>{candleOut ? <em className="wish-fireworks"><i /><i /><i /></em> : <><i className="flame-burst burst-one" /><i className="flame-burst burst-two" /><i className="flame-burst burst-three" /></>}</span><strong>{stepCopy.button}</strong></button> : celebrationStep === 4 ? allDogsRevealed ? <Button className="party-button" onClick={scrollToJournal}><BookHeart aria-hidden="true" />{t.journalButton}</Button> : <button className={`gift-button ${giftOpened ? 'is-opening' : ''}`} onClick={openGift} disabled={giftOpened}><Gift aria-hidden="true" /><strong>{giftOpened ? t.giftOpening : stepCopy.button}</strong></button> : <Button className="party-button" onClick={advanceCelebration}><Sparkles aria-hidden="true" />{stepCopy.button}</Button>}
-                {celebrationStep < 4 && <button className="skip-button" onClick={skipInteraction}>{t.skip}</button>}
               </div>
+              {celebrationStep < 4 && <button className="skip-button" onClick={skipInteraction}>{t.skip}</button>}
             </div>
           </div>
         </div>
