@@ -316,6 +316,7 @@ export default function Home() {
 
   const entryTitle = language === 'zh' ? current.titleZh || current.titleTh : current.titleTh || current.titleZh;
   const entryContent = language === 'zh' ? current.contentZh || current.contentTh : current.contentTh || current.contentZh;
+  const isImageEntry = !entryTitle.trim() && !entryContent.trim() && current.images.length > 0;
   const formattedDate = current.date
     ? new Intl.DateTimeFormat(language === 'zh' ? 'zh-CN' : 'th-TH', { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date(`${current.date}T12:00:00`))
     : birthdayNow
@@ -383,9 +384,14 @@ export default function Home() {
       {celebrationStep > 0 && <section className="journal-section" id="journal" ref={journalRef} aria-labelledby="journal-heading">
         <div className="journal-heading-row"><div>{t.journal && <p className="eyebrow">{t.journal}</p>}<h2 id="journal-heading">{t.chapter}</h2><p>{t.journalIntro}</p></div></div>
         <div className="book-wrap">
-          <div className={`book book-turn-${direction}`} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+          <div className={`book book-turn-${direction} ${isImageEntry ? 'book-image-entry' : ''}`} onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
             <span className="cover-layer cover-layer-one" aria-hidden="true" /><span className="cover-layer cover-layer-two" aria-hidden="true" />
-            <div className="binding" aria-hidden="true">{Array.from({ length: 7 }).map((_, index) => <i key={index} />)}</div>
+            {!isImageEntry && <div className="binding" aria-hidden="true">{Array.from({ length: 7 }).map((_, index) => <i key={index} />)}</div>}
+            {isImageEntry ? <article className="paper paper-image" key={`${current.id}-image`}>
+              <div className="paper-topline"><span>{formattedDate}</span><span>NO. {String(page + 1).padStart(2, '0')}</span></div>
+              <div className="image-entry-content">{current.images.map((source, index) => <figure key={source}><img src={`${PUBLIC_BASE_PATH}${source}`} alt={`${t.photoAlt} ${index + 1}`} decoding="async" /></figure>)}</div>
+              <span className="paper-page">{page * 2 + 1}</span>
+            </article> : <>
             <article className="paper paper-left" key={`${current.id}-left`}>
               <div className="paper-topline"><span>{formattedDate}</span><span>NO. {String(page + 1).padStart(2, '0')}</span></div>
               <div className={`entry-copy ${current.birthday ? 'scrollable-entry' : ''}`}><BookHeart className="entry-mark" aria-hidden="true" /><h3>{entryTitle}</h3>{entryContent.split('\n\n').map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div><span className="paper-page">{page * 2 + 1}</span>
@@ -394,10 +400,11 @@ export default function Home() {
               {current.birthday ? <div className="quote-page"><span className="rainbow-sticker" aria-hidden="true">🌈</span><blockquote>“{t.birthdayQuote}”</blockquote><div className="signature"><span>{t.sign}</span><strong>winnoe</strong></div><p className="diary-hint">{t.diaryHint}</p></div> : current.images.length ? <div className={`photo-grid photos-${Math.min(current.images.length, 3)}`}>{current.images.map((source, index) => <figure key={source}><img src={`${PUBLIC_BASE_PATH}${source}`} alt={`${t.photoAlt} ${index + 1}`} /></figure>)}</div> : <div className="empty-photo"><Sparkles aria-hidden="true" /><p>{t.emptyPhoto}</p></div>}
               <span className="paper-page">{page * 2 + 2}</span>
             </article>
+            </>}
             <div className="journal-dog-stage" aria-hidden="true">
               <span key={`${current.id}-${journalDogScene.dogIndex}-${journalDogScene.motion}`} className={`journal-dog-walker motion-${journalDogScene.motion}`} style={{ '--dog-start': `${journalDogScene.start}%` } as CSSProperties}><DogCutoutImage src={journalDog.src} alt="" /></span>
             </div>
-            <span className="ribbon" aria-hidden="true" />
+            {!isImageEntry && <span className="ribbon" aria-hidden="true" />}
           </div>
         </div>
         <nav className="page-controls" aria-label={t.journal || t.chapter}><Button variant="ghost" onClick={() => changePage(-1)} disabled={page === 0}><ChevronLeft aria-hidden="true" />{t.previous}</Button><div className="page-status"><span>{t.page} {page + 1} / {allEntries.length}</span><button className="fortune-button" onClick={openFortune} aria-label={t.fortuneLabel}><Gift aria-hidden="true" /></button></div><Button variant="ghost" onClick={() => changePage(1)} disabled={page === allEntries.length - 1}>{t.next}<ChevronRight aria-hidden="true" /></Button></nav>

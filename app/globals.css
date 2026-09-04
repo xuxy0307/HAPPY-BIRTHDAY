@@ -253,4 +253,11 @@ body{overflow-x:hidden}button{touch-action:manipulation}
   .interaction-scene>.dog-gang .dog-2{right:5%;top:6px;width:170px}
   .interaction-scene>.dog-gang .dog-4{right:8%;width:110px}
 }
+/* Image-only entries use the whole sheet without a blank text page or cropping. */
+.book.book-image-entry{min-height:0}
+.book-image-entry .paper-image{grid-column:1/-1;min-height:0;padding:clamp(24px,4vw,40px) clamp(20px,4vw,48px) 145px;border-radius:17px}
+.image-entry-content{position:relative;z-index:2;display:grid;gap:20px;min-width:0;margin-top:24px}
+.image-entry-content figure{min-width:0;margin:0}
+.image-entry-content img{display:block;width:100%;height:auto;max-height:70svh;object-fit:contain;image-orientation:from-image}
+@media(max-width:700px){.book-image-entry .paper-image{padding:28px 20px 135px;border-radius:14px}.image-entry-content{margin-top:20px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
